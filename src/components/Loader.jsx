@@ -12,7 +12,7 @@ export default function Loader({ onDone }) {
       setDone(true);
       return undefined;
     }
-    const DUR = 3800;
+    const DUR = 5000;
     const t0 = performance.now();
     let raf;
     const step = (now) => {
