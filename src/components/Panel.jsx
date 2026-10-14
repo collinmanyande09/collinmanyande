@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { startups, cases, principles } from '../data';
 import { useParallax } from '../hooks/useParallax';
+import { useReveal } from '../hooks/useReveal';
 import Experience from './Experience';
 import CaseDialog from './CaseDialog';
 
@@ -10,6 +11,7 @@ export default function Panel({ view, dark, onClose }) {
   const ref = useRef(null);
   const [openCase, setOpenCase] = useState(null);
   useParallax(ref, Boolean(view));
+  useReveal(ref, view);
 
   return (
     <aside className={`panel ${dark ? 'dark' : ''} ${view ? 'open' : ''}`} ref={ref} aria-hidden={!view}>
