@@ -121,14 +121,37 @@ export const principles = [
 ];
 
 export const views = {
-  about: { label: 'About me', title: 'Designer who builds the business too.', dark: false },
-  startups: { label: 'Startups', title: 'Building Rideo and PingHie.', dark: true },
-  work: { label: 'Selected work', title: 'Products shipped end to end.', dark: true },
-  contact: { label: 'Contact', title: 'Let’s build something useful.', dark: true },
+  about: { label: 'About me', title: 'Designer who builds the <span class="hl-dark">business too.</span>', dark: false },
+  startups: { label: 'Startups', title: 'Building <span class="hl-dark">Rideo</span> and PingHie.', dark: true },
+  work: { label: 'Selected work', title: 'Products shipped <span class="hl-dark">end to end.</span>', dark: true },
+  contact: { label: 'Contact', title: 'Let’s build something <span class="hl-dark">useful.</span>', dark: true },
 };
 
 export const orderViews = ['about', 'startups', 'work', 'contact'];
 export const defaultHero = {
   label: 'Entrepreneur · Designer · Founder',
-  title: 'Human-centered products. Built to work.',
+  title: 'Human-centered products. <span class="hl-dark">Built to work.</span>',
+};
+
+export const thinking = [
+  { quote: 'Build for the problem, not just the product.' },
+  { quote: 'A good business starts with an eager want, then builds a repeatable way to deliver it.' },
+  { quote: 'Design for how people actually behave, not how we assume they should behave.' },
+];
+
+export const stripMetrics = [
+  { label: 'projects', value: '3 projects', sub: 'products shipped' },
+  { label: 'years', value: '2 years', sub: 'since September 2024' },
+  { label: 'roles', value: '5 roles', sub: 'across various companies and teams' },
+];
+
+export const stripNote = 'Currently building Rideo’s route-based mobility platform and PingHie.';
+
+export const footer = {
+  year: new Date().getFullYear().toString(),
+  links: [
+    { href: '#about', label: 'About' },
+    { href: '#work', label: 'Work' },
+    { href: '#contact', label: 'Contact' },
+  ],
 };

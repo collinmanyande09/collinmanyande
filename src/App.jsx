@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import Hero from './components/Hero';
 import Panel from './components/Panel';
-import { defaultHero, orderViews, views } from './data';
+import { defaultHero, views } from './data';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -36,13 +36,6 @@ export default function App() {
     setView(key === 'home' ? null : key);
   };
 
-  const next = () => {
-    const i = orderViews.indexOf(view);
-    if (i === -1) setView(orderViews[0]);
-    else if (i === orderViews.length - 1) setView(null);
-    else setView(orderViews[i + 1]);
-  };
-
   const heroText = view ? { label: views[view].label, title: views[view].title } : defaultHero;
   const panelDark = !light; // sections follow the switch
 
@@ -58,7 +51,6 @@ export default function App() {
         onAbout={() => setView('about')}
         onToggleTheme={() => setLight((v) => !v)}
       />
-      <button className="next-btn" onClick={next} aria-label="Next section">›</button>
       <Panel view={view} dark={panelDark} onClose={() => setView(null)} />
     </>
   );
