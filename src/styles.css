@@ -1,8 +1,8 @@
-/* Fonts (Cabinet Grotesk, served from /public) */
-@font-face { font-family: 'Cabinet Grotesk'; font-weight: 400; font-display: swap; src: url('/assets/fonts/CabinetGrotesk-Regular.otf') format('opentype'); }
-@font-face { font-family: 'Cabinet Grotesk'; font-weight: 500; font-display: swap; src: url('/assets/fonts/CabinetGrotesk-Medium.otf') format('opentype'); }
-@font-face { font-family: 'Cabinet Grotesk'; font-weight: 700; font-display: swap; src: url('/assets/fonts/CabinetGrotesk-Bold.otf') format('opentype'); }
-@font-face { font-family: 'Cabinet Grotesk'; font-weight: 800; font-display: swap; src: url('/assets/fonts/CabinetGrotesk-Extrabold.otf') format('opentype'); }
+/* Fonts (Cabinet Grotesk, bundled by Vite so the base path is applied) */
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 400; font-display: swap; src: url('./assets/fonts/CabinetGrotesk-Regular.otf') format('opentype'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 500; font-display: swap; src: url('./assets/fonts/CabinetGrotesk-Medium.otf') format('opentype'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 700; font-display: swap; src: url('./assets/fonts/CabinetGrotesk-Bold.otf') format('opentype'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 800; font-display: swap; src: url('./assets/fonts/CabinetGrotesk-Extrabold.otf') format('opentype'); }
 
 :root {
   --sand-1: #D9B98A; --sand-2: #C9A36E;

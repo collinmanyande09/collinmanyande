@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-// Counts 00 to 100, holds briefly, then fades out
+// Counts 00 to 100, holds briefly, then fades out.
+// The counter is driven by elapsed wall-clock time on a timer rather than requestAnimationFrame,
+// because rAF is paused in background tabs and would otherwise freeze the overlay over the page.
 export default function Loader({ onDone }) {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(false);
@@ -14,15 +16,19 @@ export default function Loader({ onDone }) {
     }
     const DUR = 5000;
     const t0 = performance.now();
-    let raf;
-    const step = (now) => {
-      const p = Math.min(1, (now - t0) / DUR);
+    let hold;
+    const tick = () => {
+      const p = Math.min(1, (performance.now() - t0) / DUR);
       setCount(Math.round(p * 100));
-      if (p < 1) raf = requestAnimationFrame(step);
-      else setTimeout(() => setDone(true), 600);
+      if (p < 1) return;
+      hold = setTimeout(() => setDone(true), 600);
     };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    tick();
+    const id = setInterval(tick, 60);
+    return () => {
+      clearInterval(id);
+      clearTimeout(hold);
+    };
   }, []);
 
   useEffect(() => {
