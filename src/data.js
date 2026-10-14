@@ -52,16 +52,17 @@ export const experience = [
   },
 ];
 
-// Vite serves this project under a base path (/collinmanyande/ on GitHub Pages, / on Netlify),
-// so public assets must be resolved against it instead of assuming the domain root.
-const asset = (path) => import.meta.env.BASE_URL + path;
+// Images are imported so Vite hashes them and rewrites the URLs for the configured base path.
+import rideoImage from './assets/images/Frame_755.svg';
+import pinghieImage from './assets/images/pinghie_hero.png';
+import oakImage from './assets/images/Register_Web_version.svg';
 
 export const cases = [
   {
     key: 'rideo',
     title: 'Rideo',
     cats: ['Product', 'Mobile'],
-    image: asset('assets/images/Frame_755.svg'),
+    image: rideoImage,
     outcome: 'Pilot live on one route, with driver onboarding, passenger activation and route testing underway.',
     overview: 'A route-based mobility company in Zimbabwe, connecting passengers with trusted drivers travelling their way.',
     problem: 'Everyday commuters face unpredictable transport availability, long waiting times and limited visibility of rides along established routes.',
@@ -73,7 +74,7 @@ export const cases = [
     key: 'pinghie',
     title: 'PingHie',
     cats: ['Product', 'Mobile'],
-    image: asset('assets/images/pinghie_hero.png'),
+    image: pinghieImage,
     outcome: 'Built a v1 app for companies and NGOs.',
     overview: 'A workplace platform that brings conversations, approvals, and document management into one place.',
     problem: 'Work gets fragmented across chats, emails, and different tools. Requests get buried, approval statuses become unclear, and accountability is easily lost.',
@@ -85,7 +86,7 @@ export const cases = [
     key: 'oak',
     title: 'OAK Foundation',
     cats: ['Product', 'Web'],
-    image: asset('assets/images/Register_Web_version.svg'),
+    image: oakImage,
     outcome: 'Built a participant registration and attendance platform.',
     overview: 'A participant registration and attendance platform for a partner convening.',
     problem: 'Participants need to register, find programme information, check in and discover partners. Organisers need attendance handled reliably.',
