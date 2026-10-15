@@ -36,7 +36,7 @@ function About() {
         <div className="about-body">
           <h2 className="reveal" data-parallax="64">A product person who <span className="hl">builds the business too.</span></h2>
           <p className="bio reveal" data-parallax="30">
-            I’m an entrepreneur, designer and founder. I build companies and the products inside them, and I design for the
+            I’m a product design engineer and UI/UX developer. I build companies and the products inside them, and I design for the
             people who use what we make. Most of my work sits between the business and the screen, where strategy has to
             become something a rider, a customer, or a team can actually use.
           </p>
@@ -123,7 +123,7 @@ function Contact() {
         <span className="label"><span className="dot" aria-hidden="true"></span>Contact</span>
         <h2 className="reveal" data-parallax="64">Let’s build something useful.</h2>
         <p className="cofounder-note reveal" data-parallax="30">
-          Looking for a co-founder, founding team member or designer?{' '}
+          Looking for a product designer or UI/UX developer?{' '}
           <a href="mailto:collinmanyande09@gmail.com">Reach out.</a>
         </p>
         <a className="contact-email reveal" href="mailto:collinmanyande09@gmail.com" data-parallax="30">

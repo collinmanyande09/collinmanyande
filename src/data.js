@@ -6,7 +6,7 @@ export const experience = [
     points: ['Designed a participant registration and attendance platform.'],
   },
   {
-    title: 'Co-Founder',
+    title: 'Product Design Engineer',
     company: 'Rideo ZW',
     dates: 'Aug 2026 – Present',
     points: [
@@ -20,7 +20,7 @@ export const experience = [
     ],
   },
   {
-    title: 'Founder & Product Designer',
+    title: 'Product Designer',
     company: 'PingHie',
     dates: 'Jul 2026 – Present',
     points: [
@@ -47,7 +47,7 @@ export const experience = [
       'Owned the design of iOS and Android app experiences, from user research and flows to high-fidelity UI and interactive prototypes.',
       'Conducted user interviews, usability testing and app analytics analysis to improve retention and conversion.',
       'Built and maintained a scalable mobile design system and component library in Figma.',
-      'Partnered with PMs, developers and founders to turn product requirements into shippable app experiences.',
+      'Partnered with PMs, developers and stakeholders to turn product requirements into shippable app experiences.',
     ],
   },
 ];
@@ -78,7 +78,7 @@ export const cases = [
     outcome: 'Built a v1 app for companies and NGOs.',
     overview: 'A workplace platform that brings conversations, approvals, and document management into one place.',
     problem: 'Work gets fragmented across chats, emails, and different tools. Requests get buried, approval statuses become unclear, and accountability is easily lost.',
-    role: 'Founder and product designer.',
+    role: 'Product designer.',
     approach: 'Chat, approve and deliver in one flow: requests move from conversation to review to decision, with clear document versions and approval status.',
     link: { label: 'Visit PingHie', href: 'https://pinghie.netlify.app' },
   },
@@ -99,9 +99,9 @@ export const cases = [
 export const startups = [
   {
     key: 'rideo',
-    tag: 'Co-founder',
+    tag: 'Product Design Engineer',
     title: 'Rideo',
-    role: 'Co-founder · Product, Business & Strategy',
+    role: 'Product Design Engineer · Product Strategy',
     desc: 'A route-based mobility company in Zimbabwe, connecting passengers with trusted drivers travelling their way.',
     problem: 'Everyday commuters face unpredictable transport availability, long waiting times and limited visibility of rides along established routes.',
     building: 'Rideo’s route-based mobility platform',
@@ -109,9 +109,9 @@ export const startups = [
   },
   {
     key: 'pinghie',
-    tag: 'Founder',
+    tag: 'Product Designer',
     title: 'PingHie',
-    role: 'Founder · Product Designer',
+    role: 'Product Designer',
     desc: 'A workplace platform that brings conversations, approvals, and document management into one place.',
     problem: 'Work gets fragmented across chats, emails, and different tools. Requests get buried, approval statuses become unclear, document versions get confusing, and accountability is easily lost.',
     building: 'PingHie',
@@ -134,7 +134,7 @@ export const views = {
 
 export const orderViews = ['about', 'startups', 'work', 'contact'];
 export const defaultHero = {
-  label: 'Entrepreneur · Designer · Founder',
+  label: 'Product Design Engineer · UI/UX Developer',
   title: 'Human-centered products. <span class="hl-dark">Built to work.</span>',
 };
 
