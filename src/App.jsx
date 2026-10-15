@@ -51,6 +51,12 @@ export default function App() {
         onAbout={() => setView('about')}
         onToggleTheme={() => setLight((v) => !v)}
       />
+      {/* Dims the hero behind the panel, so the panel reads as a separate surface */}
+      <div
+        className={`scrim ${view ? 'open' : ''}`}
+        onClick={() => setView(null)}
+        aria-hidden="true"
+      />
       <Panel view={view} dark={panelDark} onClose={() => setView(null)} />
     </>
   );

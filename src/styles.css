@@ -126,6 +126,11 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease-out, transform .6s ease-out; }
 .reveal.in { opacity: 1; transform: none; }
 
+/* Scrim: dims the hero behind the panel so the panel reads as a separate
+   surface. Sits below the panel (200) but above the header (150) and menu (180). */
+.scrim { position: fixed; inset: 0; z-index: 190; background: rgba(0, 0, 0, .55); opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s; cursor: pointer; }
+.scrim.open { opacity: 1; visibility: visible; }
+
 /* Section panel */
 .panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 200; width: min(52vw, 820px); max-width: 100%; background: var(--cream); color: var(--ink); padding: 110px clamp(28px, 5vw, 72px) 96px; overflow-y: auto; transform: translateX(100%); transition: transform .6s cubic-bezier(.7, 0, .2, 1), background-color .4s, color .4s; }
 .panel.open { transform: none; }
