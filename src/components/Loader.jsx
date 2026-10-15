@@ -43,7 +43,7 @@ export default function Loader({ onDone }) {
         <span className="blob b1" />
         <span className="blob b2" />
         <span className="blob b3" />
-        <p className="loader-mark">COLLINMANYANDE.COM</p>
+        <p className="loader-mark">COLLINMANYANDE.ONLINE</p>
       </div>
       <p className="loader-count">{String(count).padStart(2, '0')}</p>
     </div>
