@@ -54,7 +54,7 @@ export const experience = [
 
 // Images are imported so Vite hashes them and rewrites the URLs for the configured base path.
 import rideoImage from './assets/images/Frame_755.svg';
-import pinghieImage from './assets/images/pinghie_hero.png';
+import pinghieImage from './assets/images/pinghie_hero.jpg';
 import oakImage from './assets/images/Register_Web_version.svg';
 
 export const cases = [

@@ -49,6 +49,7 @@ export default function App() {
         label={heroText.label}
         title={heroText.title}
         onAbout={() => setView('about')}
+        onWork={() => setView('work')}
         onToggleTheme={() => setLight((v) => !v)}
       />
       {/* Dims the hero behind the panel, so the panel reads as a separate surface */}
@@ -57,7 +58,7 @@ export default function App() {
         onClick={() => setView(null)}
         aria-hidden="true"
       />
-      <Panel view={view} dark={panelDark} onClose={() => setView(null)} />
+      <Panel view={view} dark={panelDark} onClose={() => setView(null)} onNavigate={setView} />
     </>
   );
 }

@@ -102,6 +102,20 @@ h1, h2, h3, h4 { text-transform: uppercase; font-weight: 800; letter-spacing: -0
 .theme-toggle[aria-checked="true"] span { transform: translateX(26px); }
 .theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
+/* Hero calls to action: one filled primary, one outlined secondary.
+   Placed under the headline so the action is obvious without hunting. */
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 32px; }
+.cta { display: inline-flex; align-items: center; gap: 14px; border: 0; cursor: pointer; font-family: inherit; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; height: 60px; padding: 0 30px; border-radius: 999px; transition: background-color .25s, color .25s, border-color .25s; }
+.cta-primary { background: var(--ink-deep); color: var(--cream); padding: 0 8px 0 30px; }
+.cta-primary .round-arrow { background: var(--accent); border-color: var(--accent); color: var(--ink-deep); }
+.cta-primary:hover { background: var(--accent); color: var(--ink-deep); }
+.cta-ghost { background: transparent; color: inherit; border: 1.5px solid currentColor; }
+/* On the dark hero a dark-filled primary would vanish, so flip it to the accent. */
+.hero:not(.light) .cta-primary { background: var(--accent); color: var(--ink-deep); }
+.hero:not(.light) .cta-primary:hover { background: var(--cream); }
+.hero:not(.light) .cta-primary .round-arrow { background: var(--ink-deep); border-color: var(--ink-deep); color: var(--accent); }
+.cta:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
 /* Bottom-centre next button */
 .chevron-btn { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); width: 52px; height: 52px; border: 1px solid currentColor; background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; padding: 0; z-index: 2; }
 .chevron-btn svg { width: 18px; height: 18px; }
@@ -125,6 +139,25 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .section-num { font-size: 13px; letter-spacing: .14em; color: var(--muted); }
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease-out, transform .6s ease-out; }
 .reveal.in { opacity: 1; transform: none; }
+
+/* In-panel section navigation: move between sections without reopening the menu */
+.panel-nav { display: flex; align-items: stretch; justify-content: space-between; gap: 16px; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--peach-line); }
+.panel-nav-btn { display: inline-flex; align-items: center; gap: 14px; background: none; border: 0; padding: 0; color: inherit; font-family: inherit; cursor: pointer; text-align: left; border-radius: 12px; }
+.panel-nav-btn:hover .panel-nav-label { color: var(--accent); }
+.panel-nav-btn:hover .panel-nav-arrow { border-color: var(--accent); color: var(--accent); }
+.panel-nav-btn.next { text-align: right; flex-direction: row; }
+.panel-nav-arrow { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; transition: border-color .25s, color .25s; }
+.panel-nav-arrow svg { width: 16px; height: 16px; }
+.panel-nav-text { display: flex; flex-direction: column; gap: 4px; }
+.panel-nav-dir { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.panel-nav-label { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; transition: color .25s; }
+.panel.dark .panel-nav { border-top-color: rgba(235, 211, 178, .25); }
+.panel.dark .panel-nav-dir { color: rgba(251, 245, 236, .65); }
+@media (max-width: 560px) {
+  .panel-nav { flex-direction: column; gap: 20px; }
+  .panel-nav-btn { width: 100%; }
+  .panel-nav-btn.next { flex-direction: row-reverse; }
+}
 
 /* Scrim: dims the hero behind the panel so the panel reads as a separate
    surface. Sits below the panel (200) but above the header (150) and menu (180). */
@@ -260,10 +293,14 @@ footer nav a:hover { color: var(--accent); }
 @media (max-width: 900px) {
   /* On phones the hero stacks, so trim the vertical rhythm: the ring is the tallest
      block and at its old size the stack overflowed the viewport, which (with the hero
-     centred) clipped the top padding and jammed the headline against the nav. */
-  .hero { min-height: 100svh; }
-  .hero-grid { grid-template-columns: 1fr; gap: 28px; padding-top: 104px; padding-bottom: 120px; }
+     centred) clipped the top padding and jammed the headline against the nav.
+     Aligning to the start means any residual overflow crops the decorative ring
+     from the bottom, never the headline or the CTAs. */
+  .hero { min-height: 100svh; justify-content: flex-start; padding: 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; padding-top: 88px; padding-bottom: 96px; }
   .hero-title { font-size: clamp(34px, 8.4vw, 52px); }
+  .hero-cta { margin-top: 24px; gap: 10px; }
+  .cta { height: 52px; font-size: 14px; }
   .hero-ring { width: min(320px, 58vw); }
   .hero-foot { bottom: 16px; }
   .panel { width: 100%; }
@@ -278,13 +315,19 @@ footer nav a:hover { color: var(--accent); }
   body { font-size: 16px; }
   /* Small phones: shrink the ring and gaps further so the stack still clears
      both the header above and the hero foot below. */
-  .hero-grid { gap: 24px; padding-top: 88px; padding-bottom: 88px; }
+  .hero-grid { gap: 22px; padding-top: 88px; padding-bottom: 88px; }
   .hero-title { font-size: clamp(28px, 7.6vw, 44px); }
   /* Cap by vh as well as vw: the ring is the tallest block, so on short phones a
-     width-only size leaves no room between the headline and the hero foot. */
-  .hero-ring { width: min(280px, 68vw, 30vh); }
+     width-only size leaves no room between the CTA row and the hero foot. */
+  .hero-ring { width: min(280px, 68vw, 23vh); }
   .hero-foot { bottom: 16px; }
   .exp-points li { font-size: 16px; }
+}
+@media (max-width: 340px) {
+  /* Legacy 320px screens cannot fit the headline, both CTAs and the ring at once.
+     The ring is decorative (aria-hidden), so it is the block that gives way. */
+  .hero-ring { display: none; }
+  .hero-grid { padding-bottom: 80px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

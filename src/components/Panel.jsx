@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { startups, cases, principles } from '../data';
+import { useEffect, useRef, useState } from 'react';
+import { startups, cases, principles, views, orderViews } from '../data';
 import { useParallax } from '../hooks/useParallax';
 import { useReveal } from '../hooks/useReveal';
 import Experience from './Experience';
@@ -7,11 +7,16 @@ import CaseDialog from './CaseDialog';
 
 // The section panel. Its content follows the view (About, Startups, Work, Contact)
 // and its colour follows the hero switch: light when on, dark when off.
-export default function Panel({ view, dark, onClose }) {
+export default function Panel({ view, dark, onClose, onNavigate }) {
   const ref = useRef(null);
   const [openCase, setOpenCase] = useState(null);
   useParallax(ref, Boolean(view));
   useReveal(ref, view);
+
+  // Switching sections should always start the new one at the top.
+  useEffect(() => {
+    if (ref.current) ref.current.scrollTop = 0;
+  }, [view]);
 
   return (
     <aside className={`panel ${dark ? 'dark' : ''} ${view ? 'open' : ''}`} ref={ref} aria-hidden={!view}>
@@ -20,6 +25,7 @@ export default function Panel({ view, dark, onClose }) {
       {view === 'startups' && <Startups />}
       {view === 'work' && <Work onOpen={setOpenCase} />}
       {view === 'contact' && <Contact />}
+      <PanelNav view={view} onNavigate={onNavigate} />
       {openCase && <CaseDialog item={openCase} onClose={() => setOpenCase(null)} />}
     </aside>
   );
@@ -135,5 +141,37 @@ function Contact() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Lets a reader move straight to the neighbouring section instead of having to
+// close the panel and reopen the menu just to see one more thing.
+function PanelNav({ view, onNavigate }) {
+  if (!view) return null;
+  const i = orderViews.indexOf(view);
+  const prev = orderViews[(i - 1 + orderViews.length) % orderViews.length];
+  const next = orderViews[(i + 1) % orderViews.length];
+
+  return (
+    <nav className="panel-nav" aria-label="Other sections">
+      <button className="panel-nav-btn" onClick={() => onNavigate(prev)}>
+        <span className="panel-nav-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+        </span>
+        <span className="panel-nav-text">
+          <span className="panel-nav-dir">Previous</span>
+          <span className="panel-nav-label">{views[prev].label}</span>
+        </span>
+      </button>
+      <button className="panel-nav-btn next" onClick={() => onNavigate(next)}>
+        <span className="panel-nav-text">
+          <span className="panel-nav-dir">Next</span>
+          <span className="panel-nav-label">{views[next].label}</span>
+        </span>
+        <span className="panel-nav-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </span>
+      </button>
+    </nav>
   );
 }

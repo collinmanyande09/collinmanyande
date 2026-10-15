@@ -14,14 +14,17 @@ export default function Loader({ onDone }) {
       setDone(true);
       return undefined;
     }
-    const DUR = 5000;
+    // Kept short on purpose: this overlay hides the whole page, and every extra second
+    // of it is a visitor who never sees the hero. The brand mark still reads, it just
+    // no longer holds the page hostage for 6.5s.
+    const DUR = 1000;
     const t0 = performance.now();
     let hold;
     const tick = () => {
       const p = Math.min(1, (performance.now() - t0) / DUR);
       setCount(Math.round(p * 100));
       if (p < 1) return;
-      hold = setTimeout(() => setDone(true), 600);
+      hold = setTimeout(() => setDone(true), 200);
     };
     tick();
     const id = setInterval(tick, 60);
@@ -33,7 +36,7 @@ export default function Loader({ onDone }) {
 
   useEffect(() => {
     if (!done) return undefined;
-    const id = setTimeout(onDone, 900);
+    const id = setTimeout(onDone, 450);
     return () => clearTimeout(id);
   }, [done, onDone]);
 

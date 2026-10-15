@@ -1,10 +1,21 @@
-export default function Hero({ light, label, title, onAbout, onToggleTheme }) {
+export default function Hero({ light, label, title, onAbout, onWork, onToggleTheme }) {
   return (
     <section className={`hero ${light ? 'light' : ''}`} id="top">
       <div className="hero-grid">
         <div className="hero-copy">
           <p className="hero-label">{label}</p>
           <h1 className="hero-title" dangerouslySetInnerHTML={{ __html: title }} />
+          <div className="hero-cta">
+            <button className="cta cta-primary" onClick={onWork}>
+              <span>View selected work</span>
+              <span className="round-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </span>
+            </button>
+            <button className="cta cta-ghost" onClick={onAbout}>About me</button>
+          </div>
         </div>
         <div className="hero-ring" aria-hidden="true">
           <svg viewBox="0 0 600 600">
@@ -40,14 +51,6 @@ export default function Hero({ light, label, title, onAbout, onToggleTheme }) {
       </div>
 
       <div className="hero-foot">
-        <button className="about-btn" onClick={onAbout} aria-controls="panel">
-          <span>About Me</span>
-          <span className="round-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </span>
-        </button>
         <div className="theme-switch">
           <span className="theme-label">{light ? 'Light' : 'Dark'}</span>
           <button
