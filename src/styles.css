@@ -285,6 +285,8 @@ footer nav a:hover { color: var(--accent); }
 .btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 15px 26px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .04em; }
 .btn-dark { background: var(--ink-deep); color: var(--cream); }
 .btn-dark:hover { background: var(--accent); color: var(--ink-deep); }
+/* Placeholder for a case with no live site: reads as a button, but does nothing. */
+.btn-soon { font: inherit; font-weight: 700; background: var(--peach-fill); color: var(--muted); border: 1px solid var(--peach-line); cursor: default; }
 
 /* Responsive */
 @media (max-width: 1024px) {

@@ -15,10 +15,12 @@ export default function CaseDialog({ item, onClose }) {
         <Block label="My role" text={item.role} />
         <Block label="Approach" text={item.approach} />
         <Block label="Outcome" text={item.outcome} />
-        {item.link && (
+        {item.link ? (
           <a className="btn btn-dark" href={item.link.href} target="_blank" rel="noopener">
             {item.link.label}
           </a>
+        ) : (
+          <button className="btn btn-soon" type="button" disabled>Coming Soon</button>
         )}
       </div>
     </div>

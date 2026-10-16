@@ -80,7 +80,7 @@ export const cases = [
     problem: 'Work gets fragmented across chats, emails, and different tools. Requests get buried, approval statuses become unclear, and accountability is easily lost.',
     role: 'Product designer.',
     approach: 'Chat, approve and deliver in one flow: requests move from conversation to review to decision, with clear document versions and approval status.',
-    link: { label: 'Visit PingHie', href: 'https://pinghie.netlify.app' },
+    link: { label: 'Visit PingHie', href: 'https://pinghie-site.vercel.app' },
   },
   {
     key: 'oak',
@@ -115,7 +115,7 @@ export const startups = [
     desc: 'A workplace platform that brings conversations, approvals, and document management into one place.',
     problem: 'Work gets fragmented across chats, emails, and different tools. Requests get buried, approval statuses become unclear, document versions get confusing, and accountability is easily lost.',
     building: 'PingHie',
-    link: { label: 'Visit PingHie', href: 'https://pinghie.netlify.app' },
+    link: { label: 'Visit PingHie', href: 'https://pinghie-site.vercel.app' },
   },
 ];
 
