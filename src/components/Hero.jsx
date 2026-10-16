@@ -1,4 +1,4 @@
-export default function Hero({ light, label, title, onAbout, onWork, onToggleTheme }) {
+export default function Hero({ light, label, title, onAbout, onWork, aboutButtonRef, workButtonRef, onToggleTheme }) {
   return (
     <section className={`hero ${light ? 'light' : ''}`} id="top">
       <div className="hero-grid">
@@ -6,7 +6,7 @@ export default function Hero({ light, label, title, onAbout, onWork, onToggleThe
           <p className="hero-label">{label}</p>
           <h1 className="hero-title" dangerouslySetInnerHTML={{ __html: title }} />
           <div className="hero-cta">
-            <button className="cta cta-primary" onClick={onWork}>
+            <button ref={workButtonRef} className="cta cta-primary" onClick={onWork}>
               <span>View selected work</span>
               <span className="round-arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,7 +14,7 @@ export default function Hero({ light, label, title, onAbout, onWork, onToggleThe
                 </svg>
               </span>
             </button>
-            <button className="cta cta-ghost" onClick={onAbout}>About me</button>
+            <button ref={aboutButtonRef} className="cta cta-ghost" onClick={onAbout}>About me</button>
           </div>
         </div>
         <div className="hero-ring" aria-hidden="true">

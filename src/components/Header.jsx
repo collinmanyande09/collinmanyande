@@ -1,6 +1,6 @@
 import { useHarareTime } from '../hooks/useClock';
 
-export default function Header({ light, onMenu }) {
+export default function Header({ light, onMenu, menuButtonRef }) {
   const time = useHarareTime();
   return (
     <header className={`site-head ${light ? 'ink' : ''}`}>
@@ -10,7 +10,7 @@ export default function Header({ light, onMenu }) {
       <span className="nav-clock" aria-label="Current time in Harare">
         <span>(</span> HRE <span>)</span> <span>{time}</span>
       </span>
-      <button className="menu-toggle" onClick={onMenu} aria-haspopup="true">
+      <button ref={menuButtonRef} className="menu-toggle" onClick={onMenu} aria-haspopup="true">
         Menu
       </button>
     </header>

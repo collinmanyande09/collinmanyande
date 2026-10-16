@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Loader from './components/Loader';
 import Header from './components/Header';
 import Menu from './components/Menu';
@@ -11,20 +11,34 @@ export default function App() {
   const [light, setLight] = useState(true); // white is the default mode
   const [menuOpen, setMenuOpen] = useState(false);
   const [view, setView] = useState(null);   // null = hero only
+  const menuButtonRef = useRef(null);
+  const aboutButtonRef = useRef(null);
+  const workButtonRef = useRef(null);
 
   const finishLoading = useCallback(() => setLoading(false), []);
+  const closeMenu = useCallback(() => {
+    menuButtonRef.current?.focus();
+    setMenuOpen(false);
+  }, []);
+  const closePanel = useCallback(() => {
+    if (view) {
+      const trigger = view === 'about' ? aboutButtonRef.current : workButtonRef.current;
+      trigger?.focus();
+    }
+    setView(null);
+  }, [view]);
 
   // Escape closes the menu and the panel
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') {
-        setMenuOpen(false);
-        setView(null);
+        if (menuOpen) closeMenu();
+        if (view) closePanel();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [closeMenu, closePanel, menuOpen, view]);
 
   // The page never scrolls: the landing is one screen
   useEffect(() => {
@@ -32,7 +46,7 @@ export default function App() {
   }, [loading, menuOpen, view]);
 
   const pick = (key) => {
-    setMenuOpen(false);
+    closeMenu();
     setView(key === 'home' ? null : key);
   };
 
@@ -42,23 +56,25 @@ export default function App() {
   return (
     <>
       {loading && <Loader onDone={finishLoading} />}
-      <Header light={light} onMenu={() => setMenuOpen(true)} />
-      <Menu open={menuOpen} onClose={() => setMenuOpen(false)} onPick={pick} />
+      <Header light={light} onMenu={() => setMenuOpen(true)} menuButtonRef={menuButtonRef} />
+      <Menu open={menuOpen} onClose={closeMenu} onPick={pick} />
       <Hero
         light={light}
         label={heroText.label}
         title={heroText.title}
         onAbout={() => setView('about')}
         onWork={() => setView('work')}
+        aboutButtonRef={aboutButtonRef}
+        workButtonRef={workButtonRef}
         onToggleTheme={() => setLight((v) => !v)}
       />
       {/* Dims the hero behind the panel, so the panel reads as a separate surface */}
       <div
         className={`scrim ${view ? 'open' : ''}`}
-        onClick={() => setView(null)}
+        onClick={closePanel}
         aria-hidden="true"
       />
-      <Panel view={view} dark={panelDark} onClose={() => setView(null)} onNavigate={setView} />
+      <Panel view={view} dark={panelDark} onClose={closePanel} onNavigate={setView} />
     </>
   );
 }
