@@ -16,6 +16,7 @@
   --gutter: clamp(24px, 6.5vw, 100px);
   --shadow: 0 18px 40px -18px rgba(30, 20, 16, .25);
   --font: 'Cabinet Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --body-font: 'IBM Plex Sans Variable', Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -27,6 +28,7 @@ button { font-family: inherit; }
 img { display: block; max-width: 100%; }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 p, h1, h2, h3, h4 { margin: 0; }
+p { font-family: var(--body-font); }
 
 /* Headings: uppercase, extrabold, tight tracking */
 h1, h2, h3, h4 { text-transform: uppercase; font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; }
@@ -221,6 +223,8 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .company .problem strong { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
 .company .link { align-self: flex-start; font-weight: 700; font-size: 15px; color: var(--ink-deep); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 .company .building { font-size: 14px; padding-top: 16px; border-top: 1px solid currentColor; }
+.company-evidence { padding-top: 12px; border-top: 1px solid var(--peach-line); font-size: 13px; color: var(--muted); }
+.company-evidence b { color: var(--ink); }
 .company-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .company-story-link { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--ink-deep); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
 .company-story-link:hover { color: #A94E13; }
@@ -233,6 +237,8 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .case-headline { font-size: 17px !important; font-weight: 600; line-height: 1.45; color: var(--ink) !important; }
 .case-outcome { display: grid; gap: 5px; padding-top: 14px; border-top: 1px solid var(--peach-line); }
 .case-outcome strong { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.case-proof { padding-top: 10px; border-top: 1px solid var(--peach-line); font-size: 13px !important; }
+.case-proof strong { margin-right: 6px; color: var(--ink); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* Experience carousel */

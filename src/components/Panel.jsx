@@ -86,6 +86,7 @@ function Startups({ onOpen }) {
               <p className="desc">{c.desc}</p>
               <p className="problem"><strong>The problem</strong>{c.problem}</p>
               <div className="building"><b>Current focus:</b> {c.focus}</div>
+              <div className="company-evidence"><b>Progress:</b> {c.evidence}</div>
               <div className="company-actions">
                 <button className="company-story-link" onClick={() => onOpen(cases.find((item) => item.key === c.key))}>
                   Explore case study <span aria-hidden="true">↗</span>
@@ -124,6 +125,7 @@ function Work({ onOpen }) {
                 ))}
               </div>
               <p className="case-outcome"><strong>Outcome</strong>{c.outcome}</p>
+              <p className="case-proof"><strong>Proof so far</strong>{c.evidence}</p>
             </button>
           ))}
         </div>
