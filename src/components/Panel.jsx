@@ -16,6 +16,7 @@ export default function Panel({ view, dark, onClose, onNavigate }) {
   // Switching sections should always start the new one at the top.
   useEffect(() => {
     if (ref.current) ref.current.scrollTop = 0;
+    setOpenCase(null);
   }, [view]);
 
   return (
@@ -26,7 +27,7 @@ export default function Panel({ view, dark, onClose, onNavigate }) {
       {view === 'work' && <Work onOpen={setOpenCase} />}
       {view === 'contact' && <Contact />}
       <PanelNav view={view} onNavigate={onNavigate} />
-      {openCase && <CaseDialog item={openCase} onClose={() => setOpenCase(null)} />}
+      {openCase && <CaseDialog item={openCase} dark={dark} onClose={() => setOpenCase(null)} />}
     </aside>
   );
 }

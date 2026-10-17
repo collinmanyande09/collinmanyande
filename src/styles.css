@@ -288,9 +288,16 @@ footer nav a:hover { color: var(--accent); }
 .panel.dark .company, .panel.dark .case, .panel.dark .exp-wrap, .panel.dark .principle { background: #1E1410; color: var(--cream); border-color: rgba(235, 211, 178, .18); }
 .panel.dark .company h3, .panel.dark .case h3, .panel.dark .exp-wrap h3, .panel.dark .exp-title, .panel.dark .principle p { color: var(--cream); }
 .panel.dark .company .link { color: var(--accent); border-bottom-color: var(--accent); }
+.panel.dark .company-story-link { color: var(--accent); }
+.panel.dark .company-story-link:hover { color: var(--cream); }
+.panel.dark .company-evidence { color: rgba(251, 245, 236, .72); border-color: rgba(235, 211, 178, .25); }
+.panel.dark .company-evidence b { color: var(--cream); }
 .panel.dark .company .problem, .panel.dark .company .building { border-color: rgba(235, 211, 178, .25); }
 .panel.dark .case p, .panel.dark .company .desc, .panel.dark .company .role, .panel.dark .company .problem, .panel.dark .company .building, .panel.dark .company .tag, .panel.dark .exp-company, .panel.dark .exp-points li, .panel.dark .exp-count { color: rgba(251, 245, 236, .8); }
 .panel.dark .case .case-num { color: rgba(251, 245, 236, .8); }
+.panel.dark .case .case-market { color: rgba(251, 245, 236, .72); }
+.panel.dark .case .case-headline { color: var(--cream) !important; }
+.panel.dark .case .case-outcome strong, .panel.dark .case .case-proof strong { color: var(--cream); }
 .panel.dark .principle .pill { background: var(--accent); color: var(--ink-deep); }
 .panel.dark .exp-btn { color: var(--cream); border-color: var(--cream); }
 .panel.dark .exp-btn:hover { background: var(--cream); color: var(--ink-deep); }
@@ -305,7 +312,15 @@ footer nav a:hover { color: var(--accent); }
 
 /* Case-study dialog */
 .case-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(18, 10, 7, .55); display: grid; place-items: center; padding: 24px; }
-.case-dialog { position: relative; width: min(92vw, 980px); max-height: 88vh; overflow-y: auto; background: var(--cream); color: var(--ink); padding: clamp(24px, 4vw, 48px); border: 1px solid var(--peach-line); }
+.case-dialog { position: relative; width: min(92vw, 980px); max-width: calc(100vw - 48px); max-height: 88vh; overflow-y: auto; background: var(--cream); color: var(--ink); padding: clamp(24px, 4vw, 48px); border: 1px solid var(--peach-line); }
+.case-dialog.dark { background: #120A07; color: var(--cream); border-color: rgba(235, 211, 178, .25); }
+.case-dialog.dark .cs-kicker, .case-dialog.dark .cs-meta span, .case-dialog.dark .cs-label { color: rgba(251, 245, 236, .68); }
+.case-dialog.dark .cs-meta { border-color: rgba(235, 211, 178, .25); }
+.case-dialog.dark .cs-outcome { background: #1E1410; border: 1px solid rgba(235, 211, 178, .2); }
+.case-dialog.dark .cs-outcome .cs-label { color: var(--cream); }
+.case-dialog.dark .cs-outcome .cs-evidence { color: rgba(251, 245, 236, .7); }
+.case-dialog.dark .btn-dark { background: var(--accent); color: var(--ink-deep); }
+.case-dialog.dark .btn-dark:hover { background: var(--cream); }
 .cs-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border: 1px solid var(--peach-line); background: var(--peach-fill); font-size: 24px; line-height: 1; cursor: pointer; color: var(--ink-deep); }
 .cs-kicker { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
 .cs-lead { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(20px, 4vw, 44px); padding-right: 36px; }

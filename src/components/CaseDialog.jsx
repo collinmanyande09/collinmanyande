@@ -1,7 +1,7 @@
-export default function CaseDialog({ item, onClose }) {
+export default function CaseDialog({ item, dark, onClose }) {
   return (
     <div className="case-overlay" onClick={onClose}>
-      <div className="case-dialog" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+      <div className={`case-dialog ${dark ? 'dark' : ''}`} role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
         <button className="cs-close" onClick={onClose} aria-label="Close case study">×</button>
         <div className="cs-lead">
           <div className="cs-visual">
