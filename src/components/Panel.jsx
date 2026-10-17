@@ -22,7 +22,7 @@ export default function Panel({ view, dark, onClose, onNavigate }) {
     <aside className={`panel ${dark ? 'dark' : ''} ${view ? 'open' : ''}`} ref={ref} aria-hidden={!view}>
       <button className="panel-close" onClick={onClose}>Close</button>
       {view === 'about' && <About />}
-      {view === 'startups' && <Startups />}
+      {view === 'startups' && <Startups onOpen={setOpenCase} />}
       {view === 'work' && <Work onOpen={setOpenCase} />}
       {view === 'contact' && <Contact />}
       <PanelNav view={view} onNavigate={onNavigate} />
@@ -63,7 +63,7 @@ function About() {
   );
 }
 
-function Startups() {
+function Startups({ onOpen }) {
   return (
     <section id="startups" className="section">
       <div className="container">
@@ -74,13 +74,24 @@ function Startups() {
         <div className="company-grid">
           {startups.map((c) => (
             <article key={c.key} className="company reveal" data-card>
-              <span className="tag">{c.tag}</span>
+              <div className="company-visual">
+                <img src={c.image} alt={`${c.title} product preview`} loading="lazy" />
+              </div>
+              <div className="company-heading">
+                <span className="tag">{c.market}</span>
+                <span className="company-stage">{c.stage}</span>
+              </div>
               <h3>{c.title}</h3>
               <p className="role">{c.role}</p>
               <p className="desc">{c.desc}</p>
               <p className="problem"><strong>The problem</strong>{c.problem}</p>
-              <a className="link" href={c.link.href} target="_blank" rel="noopener">{c.link.label}</a>
-              <div className="building"><b>Currently building:</b> {c.building}</div>
+              <div className="building"><b>Current focus:</b> {c.focus}</div>
+              <div className="company-actions">
+                <button className="company-story-link" onClick={() => onOpen(cases.find((item) => item.key === c.key))}>
+                  Explore case study <span aria-hidden="true">↗</span>
+                </button>
+                <a className="link" href={c.link.href} target="_blank" rel="noopener">Visit project</a>
+              </div>
             </article>
           ))}
         </div>
@@ -104,13 +115,15 @@ function Work({ onOpen }) {
                 <img src={c.image} alt={`${c.title} project`} data-drift loading="lazy" />
               </div>
               <span className="case-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="case-market">{c.market}</span>
               <h3>{c.title}</h3>
+              <p className="case-headline">{c.headline}</p>
               <div className="pills">
                 {c.cats.map((k) => (
                   <span key={k} className="pill-s">{k}</span>
                 ))}
               </div>
-              <p>{c.outcome}</p>
+              <p className="case-outcome"><strong>Outcome</strong>{c.outcome}</p>
             </button>
           ))}
         </div>

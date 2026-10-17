@@ -205,6 +205,11 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .company-grid, .work-grid { display: grid; gap: 32px; }
 .company, .case { display: flex; flex-direction: column; gap: 16px; padding: 32px; background: #FFFFFF; color: var(--ink); border: 1px solid var(--peach-line); text-align: left; text-decoration: none; will-change: transform; box-shadow: none; transition: transform .4s ease; }
 .company:hover, .case:hover { transform: translateY(-4px); }
+.company-visual { aspect-ratio: 16 / 8; overflow: hidden; background: #F1E5D6; }
+.company-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.company-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 14px; }
+.company-heading .tag { color: var(--muted); }
+.company-stage { padding: 5px 9px; background: var(--peach-fill); color: var(--ink-deep); font-size: 11px; font-weight: 700; text-transform: uppercase; }
 .company h3, .case h3 { position: relative; align-self: flex-start; display: inline-block; }
 .company h3::after, .case h3::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 3px; background: var(--accent); border-radius: 3px; transition: width .4s ease; }
 .company:hover h3::after, .case:hover h3::after, .company:focus-within h3::after, .case:focus-visible h3::after { width: 100%; }
@@ -216,11 +221,18 @@ section { padding: clamp(96px, 12vw, 160px) 0; }
 .company .problem strong { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
 .company .link { align-self: flex-start; font-weight: 700; font-size: 15px; color: var(--ink-deep); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 .company .building { font-size: 14px; padding-top: 16px; border-top: 1px solid currentColor; }
+.company-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.company-story-link { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--ink-deep); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+.company-story-link:hover { color: #A94E13; }
 .case { cursor: pointer; font: inherit; }
 .case-visual { aspect-ratio: 4 / 3; overflow: hidden; background: linear-gradient(135deg, #E9CFA8, #D4AD7C); }
 .case-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 .case h3 { font-size: 30px; }
 .case p { font-size: 15px; color: var(--muted); }
+.case-market { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.case-headline { font-size: 17px !important; font-weight: 600; line-height: 1.45; color: var(--ink) !important; }
+.case-outcome { display: grid; gap: 5px; padding-top: 14px; border-top: 1px solid var(--peach-line); }
+.case-outcome strong { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* Experience carousel */
@@ -287,10 +299,26 @@ footer nav a:hover { color: var(--accent); }
 
 /* Case-study dialog */
 .case-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(18, 10, 7, .55); display: grid; place-items: center; padding: 24px; }
-.case-dialog { position: relative; width: min(92vw, 880px); max-height: 88vh; overflow-y: auto; background: var(--cream); color: var(--ink); padding: clamp(28px, 4vw, 48px); border: 1px solid var(--peach-line); }
+.case-dialog { position: relative; width: min(92vw, 980px); max-height: 88vh; overflow-y: auto; background: var(--cream); color: var(--ink); padding: clamp(24px, 4vw, 48px); border: 1px solid var(--peach-line); }
 .cs-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border: 1px solid var(--peach-line); background: var(--peach-fill); font-size: 24px; line-height: 1; cursor: pointer; color: var(--ink-deep); }
 .cs-kicker { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.cs-title { font-size: clamp(40px, 5vw, 64px); margin-bottom: 18px; }
+.cs-lead { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(20px, 4vw, 44px); padding-right: 36px; }
+.cs-visual { aspect-ratio: 16 / 10; overflow: hidden; background: #F1E5D6; }
+.cs-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.cs-heading { display: grid; justify-items: start; gap: 12px; }
+.cs-kicker { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.cs-title { font-size: clamp(34px, 4vw, 52px); }
+.cs-headline { font-size: 18px; line-height: 1.4; }
+.cs-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0 18px; padding: 18px 0; border-block: 1px solid var(--peach-line); }
+.cs-meta span { display: block; margin-bottom: 5px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.cs-meta p { font-size: 14px; font-weight: 600; }
+.cs-overview { max-width: 760px; margin-bottom: 22px; font-size: 17px; }
+.cs-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cs-story-grid > div { align-content: start; }
+.cs-outcome { margin-top: 22px; padding: 20px 22px; background: var(--peach-fill); }
+.cs-outcome .cs-label { margin: 0 0 8px; color: var(--ink-deep); }
+.cs-outcome > p { font-size: 16px; }
+.cs-outcome .cs-evidence { margin-top: 8px; font-size: 13px; color: var(--muted); }
 .cs-label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 26px 0 8px; }
 .cs-body p { font-size: 17px; max-width: 680px; }
 .cs-body p { margin: 0 0 14px; }
@@ -300,6 +328,12 @@ footer nav a:hover { color: var(--accent); }
 .btn-dark:hover { background: var(--accent); color: var(--ink-deep); }
 /* Placeholder for a case with no live site: reads as a button, but does nothing. */
 .btn-soon { font: inherit; font-weight: 700; background: var(--peach-fill); color: var(--muted); border: 1px solid var(--peach-line); cursor: default; }
+@media (max-width: 700px) {
+  .cs-lead, .cs-story-grid { grid-template-columns: 1fr; }
+  .cs-lead { padding-right: 0; }
+  .cs-visual { max-height: 260px; }
+  .cs-heading { padding-right: 36px; }
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
