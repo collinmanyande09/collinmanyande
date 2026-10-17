@@ -321,18 +321,38 @@ footer nav a:hover { color: var(--accent); }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  /* Small phones: keep the navigation and mark within the first screen. */
-  .hero-title { font-size: clamp(28px, 7.6vw, 44px); }
-  .hero-grid { gap: 16px; padding-top: 82px; padding-bottom: 44px; }
-  .hero-nav { gap: 8px 14px; }
-  .hero-nav button { font-size: 12px; }
-  .hero-ring { width: min(250px, 56vw); }
+  .hero-grid { flex: 1; align-content: center; gap: clamp(24px, 5vh, 40px); padding: 82px var(--gutter) 96px; }
+  .hero-label { margin-bottom: 18px; padding: 8px 12px; font-size: 12px; }
+  .hero-title { margin-bottom: 20px; font-size: clamp(38px, 10.5vw, 50px); }
+  .hero-cta { margin-top: 0; }
+  .hero-cta .cta-primary { width: 100%; justify-content: space-between; padding: 0 6px 0 18px; }
+  .cta { height: 64px; font-size: 17px; }
+  .hero-side { gap: 0; }
+  .hero-ring { display: none; }
+  .hero-nav { justify-content: space-between; gap: 2px; margin-bottom: 0; }
+  .hero-nav-label { font-size: 12px; }
+  .hero-nav button { min-height: 48px; padding: 0 3px; font-size: 16px; }
   .exp-points li { font-size: 16px; }
 }
-@media (max-width: 340px) {
-  /* Legacy 320px screens cannot fit the headline, both CTAs and the ring at once.
-     The ring is decorative (aria-hidden), so it is the block that gives way. */
+@media (max-width: 900px) and (max-height: 600px) and (orientation: landscape) {
+  .hero { min-height: 0; justify-content: center; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .72fr); align-items: end; gap: clamp(16px, 4vw, 32px); padding: 76px var(--gutter) 72px; }
+  .hero-label { margin-bottom: 12px; padding: 7px 11px; font-size: 10px; }
+  .hero-title { margin-bottom: 16px; font-size: clamp(30px, 4.5vw, 38px); }
+  .hero-cta { margin-top: 0; }
+  .cta { height: 56px; font-size: 14px; }
+  .cta-primary { gap: 8px; padding: 0 5px 0 12px; }
+  .round-arrow { width: 38px; height: 38px; }
+  .round-arrow svg { width: 16px; height: 16px; }
+  .hero-side { gap: 8px; }
   .hero-ring { display: none; }
+  .hero-nav { justify-content: flex-end; gap: 0 8px; margin-bottom: 0; }
+  .hero-nav-label { font-size: 12px; }
+  .hero-nav button { min-height: 48px; padding: 0 2px; font-size: 14px; }
+  .hero-foot { bottom: 8px; }
+}
+@media (max-width: 340px) {
+  .hero-title { font-size: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
