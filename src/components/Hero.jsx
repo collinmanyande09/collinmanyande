@@ -1,4 +1,11 @@
-export default function Hero({ light, label, title, onAbout, onWork, aboutButtonRef, workButtonRef, onToggleTheme }) {
+const destinations = [
+  { key: 'about', label: 'About', refName: 'aboutButtonRef' },
+  { key: 'startups', label: 'Startups', refName: 'startupsButtonRef' },
+  { key: 'contact', label: 'Contact', refName: 'contactButtonRef' },
+];
+
+export default function Hero({ light, label, title, onWork, onNavigate, aboutButtonRef, startupsButtonRef, contactButtonRef, workButtonRef, onToggleTheme }) {
+  const destinationRefs = { aboutButtonRef, startupsButtonRef, contactButtonRef };
   return (
     <section className={`hero ${light ? 'light' : ''}`} id="top">
       <div className="hero-grid">
@@ -14,8 +21,19 @@ export default function Hero({ light, label, title, onAbout, onWork, aboutButton
                 </svg>
               </span>
             </button>
-            <button ref={aboutButtonRef} className="cta cta-ghost" onClick={onAbout}>About me</button>
           </div>
+          <nav className="hero-nav" aria-label="Explore portfolio">
+            <span className="hero-nav-label">Explore</span>
+            {destinations.map((destination) => (
+              <button
+                key={destination.key}
+                ref={destinationRefs[destination.refName]}
+                onClick={() => onNavigate(destination.key)}
+              >
+                {destination.label}
+              </button>
+            ))}
+          </nav>
         </div>
         <div className="hero-ring" aria-hidden="true">
           <svg viewBox="0 0 600 600">

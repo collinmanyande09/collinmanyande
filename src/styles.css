@@ -86,6 +86,10 @@ h1, h2, h3, h4 { text-transform: uppercase; font-weight: 800; letter-spacing: -0
 .hero.light .hero-title .hl-dark { color: var(--ink-deep); background: linear-gradient(transparent 62%, var(--accent) 62%, var(--accent) 92%, transparent 92%); }
 .hero-ring { width: min(480px, 100%); justify-self: center; color: currentColor; }
 .hero-ring svg { width: 100%; height: auto; display: block; }
+.hero-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 22px; }
+.hero-nav-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .65; }
+.hero-nav button { padding: 3px 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.hero-nav button:hover { color: var(--accent); }
 .ring-spin { transform-box: view-box; transform-origin: 300px 300px; animation: ring-spin 60s linear infinite; }
 .ring-spin-rev { transform-box: view-box; transform-origin: 300px 300px; animation: ring-spin 42s linear infinite reverse; }
 .hero-ring:hover .ring-spin, .hero-ring:hover .ring-spin-rev { animation-play-state: paused; }
@@ -299,11 +303,11 @@ footer nav a:hover { color: var(--accent); }
      Aligning to the start means any residual overflow crops the decorative ring
      from the bottom, never the headline or the CTAs. */
   .hero { min-height: 100svh; justify-content: flex-start; padding: 0; }
-  .hero-grid { grid-template-columns: 1fr; gap: 24px; padding-top: 88px; padding-bottom: 96px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 20px; padding-top: 88px; padding-bottom: 56px; }
   .hero-title { font-size: clamp(34px, 8.4vw, 52px); }
   .hero-cta { margin-top: 24px; gap: 10px; }
   .cta { height: 52px; font-size: 14px; }
-  .hero-ring { width: min(320px, 58vw); }
+  .hero-ring { width: min(300px, 58vw); }
   .hero-foot { bottom: 16px; }
   .panel { width: 100%; }
   .strip-metrics { grid-template-columns: 1fr; gap: 20px; }
@@ -315,21 +319,18 @@ footer nav a:hover { color: var(--accent); }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  /* Small phones: shrink the ring and gaps further so the stack still clears
-     both the header above and the hero foot below. */
-  .hero-grid { gap: 22px; padding-top: 88px; padding-bottom: 88px; }
+  /* Small phones: keep the navigation and mark within the first screen. */
   .hero-title { font-size: clamp(28px, 7.6vw, 44px); }
-  /* Cap by vh as well as vw: the ring is the tallest block, so on short phones a
-     width-only size leaves no room between the CTA row and the hero foot. */
-  .hero-ring { width: min(280px, 68vw, 23vh); }
-  .hero-foot { bottom: 16px; }
+  .hero-grid { gap: 16px; padding-top: 82px; padding-bottom: 44px; }
+  .hero-nav { gap: 8px 14px; margin-top: 16px; }
+  .hero-nav button { font-size: 12px; }
+  .hero-ring { width: min(250px, 56vw); }
   .exp-points li { font-size: 16px; }
 }
 @media (max-width: 340px) {
   /* Legacy 320px screens cannot fit the headline, both CTAs and the ring at once.
      The ring is decorative (aria-hidden), so it is the block that gives way. */
   .hero-ring { display: none; }
-  .hero-grid { padding-bottom: 80px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

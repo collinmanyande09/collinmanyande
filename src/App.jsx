@@ -13,6 +13,8 @@ export default function App() {
   const [view, setView] = useState(null);   // null = hero only
   const menuButtonRef = useRef(null);
   const aboutButtonRef = useRef(null);
+  const startupsButtonRef = useRef(null);
+  const contactButtonRef = useRef(null);
   const workButtonRef = useRef(null);
 
   const finishLoading = useCallback(() => setLoading(false), []);
@@ -22,7 +24,13 @@ export default function App() {
   }, []);
   const closePanel = useCallback(() => {
     if (view) {
-      const trigger = view === 'about' ? aboutButtonRef.current : workButtonRef.current;
+      const triggers = {
+        about: aboutButtonRef.current,
+        startups: startupsButtonRef.current,
+        work: workButtonRef.current,
+        contact: contactButtonRef.current,
+      };
+      const trigger = triggers[view];
       trigger?.focus();
     }
     setView(null);
@@ -40,7 +48,7 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [closeMenu, closePanel, menuOpen, view]);
 
-  // The page never scrolls: the landing is one screen
+  // The page never scrolls: the landing is one screen.
   useEffect(() => {
     document.body.classList.toggle('locked', loading || menuOpen || Boolean(view));
   }, [loading, menuOpen, view]);
@@ -62,9 +70,11 @@ export default function App() {
         light={light}
         label={heroText.label}
         title={heroText.title}
-        onAbout={() => setView('about')}
         onWork={() => setView('work')}
+        onNavigate={setView}
         aboutButtonRef={aboutButtonRef}
+        startupsButtonRef={startupsButtonRef}
+        contactButtonRef={contactButtonRef}
         workButtonRef={workButtonRef}
         onToggleTheme={() => setLight((v) => !v)}
       />
