@@ -78,15 +78,16 @@ h1, h2, h3, h4 { text-transform: uppercase; font-weight: 800; letter-spacing: -0
 /* Hero */
 .hero { position: relative; height: 100vh; height: 100svh; min-height: 620px; background: #0F0B09; color: var(--cream); display: flex; flex-direction: column; justify-content: center; transition: background-color .5s, color .5s; overflow: hidden; }
 .hero.light { background: var(--cream); color: var(--ink-deep); }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(40px, 6vw, 96px); padding: clamp(110px, 15vh, 140px) var(--gutter) clamp(140px, 19vh, 170px); width: 100%; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: clamp(40px, 6vw, 96px); padding: clamp(110px, 15vh, 140px) var(--gutter) clamp(140px, 19vh, 170px); width: 100%; }
 .hero-copy { max-width: 600px; }
 .hero-label { display: inline-block; margin-bottom: 24px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; padding: 9px 16px; border: 1px solid currentColor; opacity: .85; }
 .hero-title { font-size: clamp(40px, 5.2vw, 80px); letter-spacing: -0.04em; margin-bottom: 32px; line-height: .96; }
 .hero-title .hl-dark { color: var(--accent); }
 .hero.light .hero-title .hl-dark { color: var(--ink-deep); background: linear-gradient(transparent 62%, var(--accent) 62%, var(--accent) 92%, transparent 92%); }
-.hero-ring { width: min(480px, 100%); justify-self: center; color: currentColor; }
+.hero-side { display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
+.hero-ring { width: min(400px, 100%); justify-self: center; color: currentColor; }
 .hero-ring svg { width: 100%; height: auto; display: block; }
-.hero-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 22px; }
+.hero-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; align-self: stretch; gap: 10px 18px; margin: 0 0 18px; }
 .hero-nav-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .65; }
 .hero-nav button { padding: 3px 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
 .hero-nav button:hover { color: var(--accent); }
@@ -303,11 +304,12 @@ footer nav a:hover { color: var(--accent); }
      Aligning to the start means any residual overflow crops the decorative ring
      from the bottom, never the headline or the CTAs. */
   .hero { min-height: 100svh; justify-content: flex-start; padding: 0; }
-  .hero-grid { grid-template-columns: 1fr; gap: 20px; padding-top: 88px; padding-bottom: 56px; }
+  .hero-grid { grid-template-columns: 1fr; align-items: start; gap: 20px; padding-top: 88px; padding-bottom: 56px; }
   .hero-title { font-size: clamp(34px, 8.4vw, 52px); }
   .hero-cta { margin-top: 24px; gap: 10px; }
   .cta { height: 52px; font-size: 14px; }
   .hero-ring { width: min(300px, 58vw); }
+  .hero-nav { margin-bottom: 0; }
   .hero-foot { bottom: 16px; }
   .panel { width: 100%; }
   .strip-metrics { grid-template-columns: 1fr; gap: 20px; }
@@ -322,7 +324,7 @@ footer nav a:hover { color: var(--accent); }
   /* Small phones: keep the navigation and mark within the first screen. */
   .hero-title { font-size: clamp(28px, 7.6vw, 44px); }
   .hero-grid { gap: 16px; padding-top: 82px; padding-bottom: 44px; }
-  .hero-nav { gap: 8px 14px; margin-top: 16px; }
+  .hero-nav { gap: 8px 14px; }
   .hero-nav button { font-size: 12px; }
   .hero-ring { width: min(250px, 56vw); }
   .exp-points li { font-size: 16px; }

@@ -22,20 +22,9 @@ export default function Hero({ light, label, title, onWork, onNavigate, aboutBut
               </span>
             </button>
           </div>
-          <nav className="hero-nav" aria-label="Explore portfolio">
-            <span className="hero-nav-label">Explore</span>
-            {destinations.map((destination) => (
-              <button
-                key={destination.key}
-                ref={destinationRefs[destination.refName]}
-                onClick={() => onNavigate(destination.key)}
-              >
-                {destination.label}
-              </button>
-            ))}
-          </nav>
         </div>
-        <div className="hero-ring" aria-hidden="true">
+        <div className="hero-side">
+          <div className="hero-ring" aria-hidden="true">
           <svg viewBox="0 0 600 600">
             <defs>
               <path id="ring-outer" d="M300,64 a236,236 0 1,1 0,472 a236,236 0 1,1 0,-472" />
@@ -64,7 +53,20 @@ export default function Hero({ light, label, title, onWork, onNavigate, aboutBut
             <text x="300" y="314" textAnchor="middle" fontSize="44" fontWeight="700" fill="#120A07">
               CM
             </text>
-          </svg>
+            </svg>
+          </div>
+          <nav className="hero-nav" aria-label="Explore portfolio">
+            <span className="hero-nav-label">Explore</span>
+            {destinations.map((destination) => (
+              <button
+                key={destination.key}
+                ref={destinationRefs[destination.refName]}
+                onClick={() => onNavigate(destination.key)}
+              >
+                {destination.label}
+              </button>
+            ))}
+          </nav>
         </div>
       </div>
 
